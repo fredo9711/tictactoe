@@ -1,0 +1,2 @@
+class ailogic():
+    pass
