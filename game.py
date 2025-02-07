@@ -43,7 +43,7 @@ class game():
 
 
     def wincheck(self,player1,player2):
-        pass
+        return self.linecheck(player1,player2),self.colonmcheck(player1,player2),self.diagcheck(player1,player2)
 
 
 
