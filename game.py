@@ -1,5 +1,6 @@
 
 import numpy as np
+
 class game():
     
     def __init__(self):
