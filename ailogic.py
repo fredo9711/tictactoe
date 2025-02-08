@@ -1,5 +1,6 @@
-import inputlogic
-import numpy as np 
+from inputlogic import inputlogic
+import numpy as np
+
 class ailogic(inputlogic):
     
     def __init__(self,player):

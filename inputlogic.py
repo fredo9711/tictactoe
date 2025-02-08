@@ -1,4 +1,4 @@
-class inputlogic():
+class inputlogic:
     
     def __init__(self,player):
         self.player = player

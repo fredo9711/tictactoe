@@ -1,8 +1,8 @@
 import unittest
 import start
-import game
-import ailogic
-import inputlogic
+from game import game
+from ailogic import ailogic
+from inputlogic import inputlogic
 
 
 class tictactoeTEST(unittest.TestCase):
@@ -12,32 +12,29 @@ class tictactoeTEST(unittest.TestCase):
         pass
 
     def linecheck_test(self):
-        board = [[1, 1, 1],
-                 [0, 2, 0],
-                 [2, 0, 2]]
         testgame = game()
-        testgame.tictactoe = board
-        self.assertEqual(testgame.linecheck(1,2),1)
+        testgame.tictactoe[0, 0] = "X"
+        testgame.tictactoe[0, 1] = "X"
+        testgame.tictactoe[0, 2] = "X"
+        self.assertEqual(testgame.linecheck("X","O"),"X")
 
     def colonmcheck_test(self):
-        board = [[0, 1, 1],
-                 [0, 2, 1],
-                 [2, 0, 1]]
         testgame = game()
-        testgame.tictactoe = board
-        self.assertEqual(testgame.colonmcheck(1,2),1)
+        testgame.tictactoe[0, 2] = "X"
+        testgame.tictactoe[1, 2] = "X"
+        testgame.tictactoe[2, 2] = "X"
+        self.assertEqual(testgame.colonmcheck("X","O"),"X")
     
     def diagcheck_test(self):
-        board1 = [[0, 1, 2],
-                 [0, 2, 1],
-                 [2, 0, 1]]
         testgame = game()
-        testgame.tictactoe = board1
-        self.assertEqual(testgame.diagcheck(1,2),2)
-        board1 = [[1, 1, 2],
-                 [0, 1, 1],
-                 [2, 0, 1]]
-        self.assertEqual(testgame.diagcheck(1,2),1)       
+        testgame.tictactoe[0, 0] = "X"
+        testgame.tictactoe[1, 1] = "X"
+        testgame.tictactoe[2, 2] = "X"
+        self.assertEqual(testgame.diagcheck("X","O"),"X")
+        testgame.tictactoe[0, 2] = "O"
+        testgame.tictactoe[1, 1] = "O"
+        testgame.tictactoe[2, 0] = "O"
+        self.assertEqual(testgame.diagcheck("X","O"),"O")       
         
 
     def wincheck_test(self):
@@ -64,3 +61,6 @@ class tictactoeTEST(unittest.TestCase):
 
 test = tictactoeTEST()
 test.linecheck_test()
+test.colonmcheck_test()
+test.diagcheck_test()
+
