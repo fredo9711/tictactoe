@@ -3,13 +3,16 @@ import start
 from game import game
 from ailogic import ailogic
 from inputlogic import inputlogic
+import numpy as np
 
 
 class tictactoeTEST(unittest.TestCase):
 
 # Game test function
     def tictactoeupdate_test(self):
-        pass
+        testgame = game()
+        testgame.tictactoeupdate((0,0),"X")
+        self.assertEqual(testgame.tictactoe[0][0],"X")
 
     def linecheck_test(self):
         testgame = game()
@@ -36,9 +39,19 @@ class tictactoeTEST(unittest.TestCase):
         testgame.tictactoe[2, 0] = "O"
         self.assertEqual(testgame.diagcheck("X","O"),"O")       
         
+    def drawcheck_test(self):
+        testgame = game()
+        testgame.tictactoe = np.full((3,3),"w",dtype=str)
+        self.assertEqual(testgame.drawcheck(),True)
+
 
     def wincheck_test(self):
-        pass
+        testgame = game()
+        testgame.tictactoe[0, 0] = "X"
+        testgame.tictactoe[1, 1] = "X"
+        testgame.tictactoe[2, 2] = "X"
+        self.assertEqual(testgame.wincheck("X","O"),"X")
+
 
 #AI logic
     def inputcheckai_test(self):
@@ -63,4 +76,6 @@ test = tictactoeTEST()
 test.linecheck_test()
 test.colonmcheck_test()
 test.diagcheck_test()
-
+test.wincheck_test()
+test.tictactoeupdate_test()
+test.drawcheck_test()

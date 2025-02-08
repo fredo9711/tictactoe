@@ -1,6 +1,5 @@
-import game
-import ailogic
-import inputlogic
+from game import game
+
 #menu class
 #game logic
 #ai logic
@@ -8,4 +7,5 @@ import inputlogic
 
 
 if __name__ == "__main__":
-    pass
+    Game = game()
+    print(Game.aivsplayer())
